@@ -1,8 +1,23 @@
 <!DOCTYPE html>
   <html>
+    <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    </head>
     <body>
-      <script>
-      
-      </script>
+    <div>hi</div>
+        <script src="./client/app.js"></script>
+        <script>
+        $.getJSON( 'https://www.strava.com/api/v3/athlete/activities -H "Authorization: Bearer 491eafe37f405331ffc91eef2d04209cbd74f9f5"', function( data ) {
+            var items = [];
+            $.each( data, function( key, val ) {
+              items.push( "<li id='" + key + "'>" + val + "</li>" );
+            });
+           
+            $( "<ul/>", {
+              "class": "my-new-list",
+              html: items.join( "" )
+            }).appendTo( "body" );
+          });
+        </script>
     </body>
   </html>
